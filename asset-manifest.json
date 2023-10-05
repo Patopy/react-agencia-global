@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/react-agencia-global/static/css/main.14e849d8.css",
+    "main.js": "/react-agencia-global/static/js/main.706ee7b2.js",
+    "static/media/Logo.png": "/react-agencia-global/static/media/Logo.e26d29e785add0177205.png",
+    "index.html": "/react-agencia-global/index.html",
+    "main.14e849d8.css.map": "/react-agencia-global/static/css/main.14e849d8.css.map",
+    "main.706ee7b2.js.map": "/react-agencia-global/static/js/main.706ee7b2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.14e849d8.css",
+    "static/js/main.706ee7b2.js"
+  ]
+}
