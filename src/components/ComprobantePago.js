@@ -1,7 +1,8 @@
 //'use client';
 
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
+
 import { Button, Label, TextInput } from 'flowbite-react';
 //import FileUpload from './FileUpload';
 
@@ -12,7 +13,10 @@ export default function ComprobantePago() {
     const [data, setData] = useState({});
     const [mostrardata, setMostrardata] = useState(false);
     const [file, setFile]= useState(null);
-
+    const [fileimg, setFileimg] = useState();
+    
+    const uploadRef = React.useRef();
+  
     const { 
         register,
         formState:{ errors},
@@ -37,18 +41,29 @@ export default function ComprobantePago() {
              {
               method:'POST',
               body: formData
-             }).then((response) => response.json())
+             })
+             .then((response) => response.json())
              .catch((error) => console.error("Error:", error))
-             .then((response) => console.log("Success:", response));
+             .then((response) => console.log("Success:", response))
+             ;
     };
 
-    const handleInpFile = (event)=>{
 
-        console.log( ' ingresa handleInpFile ')
-        console.log( event.target  )
+    const handleInpFileChange = (event)=>{
 
-        setFile( event.target.files[0] )
-    }
+      console.log( ' ingresa handleInpFileChange ')
+  
+         /** Mostrar Imagen */  
+         if( event.target.files[0] ){      
+            setFile( event.target.files[0] )
+            setFileimg( URL.createObjectURL( event.target.files[0] ));
+          }else{
+            setFileimg(null);
+          }
+
+  }
+
+    
 
     
     
@@ -92,19 +107,23 @@ export default function ComprobantePago() {
           </div>
 
     
-                <div>
+          <div>
 
-<label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" 
-         htmlFor="file_comprobante">Upload file</label>
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" 
+                        htmlFor="file_comprobante">Seleccionar imagen:</label>
 
-<input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" 
-          id="file_comprobante" type="file"
-          accept="image/*,.pdf" 
-          onChange={ handleInpFile }
-          {...register("file_comprobante", { required: true })} 
-          aria-invalid={errors.file_comprobante ? "true" : "false"}
-/>
-                </div>   
+                <input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" 
+                          id="file_comprobante" 
+                          type="file"
+                          accept="image/*,.pdf" 
+                          onInput={ handleInpFileChange } 
+                          //onClick={ handleInpFileClick } 
+                          ref={uploadRef} 
+                          /*  onChange={UploadFile} */
+                          {...register("file_comprobante", { required: true })} 
+                          aria-invalid={errors.file_comprobante ? "true" : "false"}
+                />
+          </div>   
 
           <div className="md:flex md:items-center">
     <div className="md:w-1/3"></div>
@@ -120,6 +139,9 @@ export default function ComprobantePago() {
   </div> 
 
   { mostrardata && <div>{ JSON.stringify(data) }</div> }
+
+  { fileimg &&     <img src={fileimg} alt="" style={{ width: "300px", height: "100px" }} /> }
+
     
 </>
   )

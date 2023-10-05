@@ -16,11 +16,12 @@ app.post('/api/upload', (req, res, next) => {
  
     const form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
-            console.log('files', files)
+           console.log('files', files)
         let oldPath = files.file.filepath;
+           console.log('oldPath', oldPath)
         let newPath = path.join( __dirname, '/uploads'
-            + '/' + files.file.name)
-
+            + '/' + files.file.originalFilename)
+            console.log('newPath', newPath)
         let rawData = fs.readFileSync(oldPath)
  
         fs.writeFile(newPath, rawData, function (err) {
