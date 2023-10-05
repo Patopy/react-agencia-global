@@ -3,10 +3,12 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import Contact from './Contact';
 import FormRegister from './FormRegister';
 import logo from '../img/Logo.png';
+import FormconSelect from './FormHook';
+import FormHookRegister from './FormHookRegister'
+import ComprobantePago from './ComprobantePago';
 
 
 export default function Nav01() {
-
 
   return (
     <>
@@ -33,6 +35,20 @@ export default function Nav01() {
         Registro Cliente
       </Link>
 
+      <Link to="/form-hook" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        Form hook
+      </Link>
+
+      <Link to="/form-hook-register" 
+            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        Form hook Register
+      </Link>
+
+      <Link to="/comprobante-pago" 
+            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        Comprobante pago
+      </Link>
+
       <Link to="/contacto" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
         Contacto
       </Link>
@@ -41,13 +57,15 @@ export default function Nav01() {
    
   </div>
 </nav>
-
-
       <Routes>
          <Route path="/" element={<div>Pagina Inicial!</div>} />
          <Route path="/form-register" element={<FormRegister />} />
-         <Route path="/contacto" element={<Contact />} />
+         <Route path="/form-hook"  element={<FormconSelect />} />
+         <Route path="/form-hook-register"  element={<FormHookRegister />} />
+         <Route path="/contacto"   element={<Contact />} />
+         <Route path="comprobante-pago" element={<ComprobantePago />} />
       </Routes>
+
     </BrowserRouter>
     </>
   );

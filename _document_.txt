@@ -1,0 +1,22 @@
+
+https://flowbite.com/docs/getting-started/react/
+
+(no) https://codesandbox.io/p/sandbox/flowbite-react-global-forked-fr7xk7
+
+https://codesandbox.io/s/flowbite-react-global-produc-9cfpwz
+
+https://www.tutorialesprogramacionya.com/javascriptya/nodejsya/detalleconcepto.php?punto=14&codigo=14&inicio=0
+
+
+Hosting cpanel
+==============
+    https://www.youtube.com/watch?v=R9NyZLQAVVg
+
+
+npm install react-hook-form
+
+
+sudo chmod -R 755 *
+sudo chmod -R 777 node_modules
+
+    sudo chmod -R 777 /ruta/carpeta
