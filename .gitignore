@@ -9,6 +9,7 @@
 # mi carpeta
 /src/components/pruebas
 /_Proyecto-AhorroProgramadoViaje
+_*.txt
 
 # testing
 /coverage
